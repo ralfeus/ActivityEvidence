@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes"?>
+<settings
+  xmlns="http://activity.evidence.cz.ibm.com/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://activity.evidence.cz.ibm.com/ settings.xsd">
+  <URL>http://9.158.161.135/activities_evidence/service.new.php</URL>
+  <CommunicationURL>http://9.158.161.135/activities_evidence/communication_service.new.php</CommunicationURL>
+  <AdminID>Z61386</AdminID>
+  <ReminderTimer>1</ReminderTimer>
+  <DefaultSaveAction>StartWorking</DefaultSaveAction>
+  <DefaultCustomer>Sued-Chemie</DefaultCustomer>
+  <DefaultActivity>Troubleshooting</DefaultActivity>
+  <CustomerDefaultActivity Customer="VIG">Backup check</CustomerDefaultActivity>
+  <CustomerDefaultActivity Customer="Automobile Associate (AA)">Hypersoft (troubleshooting)</CustomerDefaultActivity>
+  <CustomerDefaultActivity Customer="Carlsberg">Troubleshooting</CustomerDefaultActivity>
+  <CustomerDefaultActivity Customer="ABB">Hypersoft (administration)</CustomerDefaultActivity>
+  <Update>False</Update>
+</settings>

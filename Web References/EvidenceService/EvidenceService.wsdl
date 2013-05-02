@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s0="http://activity.evidence.cz.ibm.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" targetNamespace="http://activity.evidence.cz.ibm.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://activity.evidence.cz.ibm.com/">
+      <s:element name="GetCustomersRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="unbounded" name="Customers" type="s0:ObjectStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActivitiesRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActivitiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="unbounded" name="Activities" type="s0:ObjectStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOvertimeTypesRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOvertimeTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="unbounded" name="OvertimeTypes" type="s0:ObjectStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendActivityRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ActivityID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="StartTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Duration" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="HasTicket" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="TicketNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OvertimeType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateActivityRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActivityEntry" type="s0:ActivityReportStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Result" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteActivityRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActivityID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastActivitiesRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastActivitiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="Entries" type="s0:ActivityReportStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTodayWorkDurationRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTodayWorkDurationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="WorkDuration" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActivitiesForClaimRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientVersion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PeriodBegin" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActivitiesForClaimResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="Entries" type="s0:ClaimStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDefaultClaimCodeRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientVersion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDefaultClaimCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ClaimCode" type="s0:ClaimCode" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateActivityForClaimRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientVersion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Activity" type="s0:ClaimStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOncallScheduleRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ClientVersion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PeriodBegin" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="PeriodEnd" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOncallScheduleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="DateMap" type="s0:OncallDateStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOncallStandbyGroupsRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ClientVersion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOncallStandbyGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="Result" type="s0:ClaimCode" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPublicHolidaysResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="Holiday" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendInformationRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="unbounded" name="Information" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ObjectStruct">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ClaimCode">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Account" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkItem" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CalledIn" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Overtime" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ClaimStruct">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Activity" type="s0:ActivityReportStruct" />
+          <s:element minOccurs="1" maxOccurs="1" name="StandardClaim" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlannedOvertime" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClaimCode" type="s0:ClaimCode" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ActivityReportStruct">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Customer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activity" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkDuration" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TicketNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OncallDateStruct">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="OncallHours" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="GetCustomersSoapIn">
+    <part name="parameters" element="s0:GetCustomersRequest" />
+  </message>
+  <message name="GetCustomersSoapOut">
+    <part name="parameters" element="s0:GetCustomersResponse" />
+  </message>
+  <message name="GetActivitiesSoapIn">
+    <part name="parameters" element="s0:GetActivitiesRequest" />
+  </message>
+  <message name="GetActivitiesSoapOut">
+    <part name="parameters" element="s0:GetActivitiesResponse" />
+  </message>
+  <message name="GetOvertimeTypesSoapIn">
+    <part name="parameters" element="s0:GetOvertimeTypesRequest" />
+  </message>
+  <message name="GetOvertimeTypesSoapOut">
+    <part name="parameters" element="s0:GetOvertimeTypesResponse" />
+  </message>
+  <message name="SendActivitySoapIn">
+    <part name="parameters" element="s0:SendActivityRequest" />
+  </message>
+  <message name="UpdateActivitySoapIn">
+    <part name="parameters" element="s0:UpdateActivityRequest" />
+  </message>
+  <message name="UpdateActivitySoapOut">
+    <part name="parameters" element="s0:UpdateActivityResponse" />
+  </message>
+  <message name="DeleteActivitySoapIn">
+    <part name="parameters" element="s0:DeleteActivityRequest" />
+  </message>
+  <message name="GetLastActivitiesSoapIn">
+    <part name="parameters" element="s0:GetLastActivitiesRequest" />
+  </message>
+  <message name="GetLastActivitiesSoapOut">
+    <part name="parameters" element="s0:GetLastActivitiesResponse" />
+  </message>
+  <message name="GetTodayWorkDurationSoapIn">
+    <part name="parameters" element="s0:GetTodayWorkDurationRequest" />
+  </message>
+  <message name="GetTodayWorkDurationSoapOut">
+    <part name="parameters" element="s0:GetTodayWorkDurationResponse" />
+  </message>
+  <message name="GetActivitiesForClaimSoapIn">
+    <part name="parameters" element="s0:GetActivitiesForClaimRequest" />
+  </message>
+  <message name="GetActivitiesForClaimSoapOut">
+    <part name="parameters" element="s0:GetActivitiesForClaimResponse" />
+  </message>
+  <message name="GetDefaultClaimCodeSoapIn">
+    <part name="parameters" element="s0:GetDefaultClaimCodeRequest" />
+  </message>
+  <message name="GetDefaultClaimCodeSoapOut">
+    <part name="parameters" element="s0:GetDefaultClaimCodeResponse" />
+  </message>
+  <message name="UpdateActivityForClaimSoapIn">
+    <part name="parameters" element="s0:UpdateActivityForClaimRequest" />
+  </message>
+  <message name="SendInformationSoapIn">
+    <part name="parameters" element="s0:SendInformationRequest" />
+  </message>
+  <message name="GetOncallScheduleSoapIn">
+    <part name="parameters" element="s0:GetOncallScheduleRequest" />
+  </message>
+  <message name="GetOncallScheduleSoapOut">
+    <part name="parameters" element="s0:GetOncallScheduleResponse" />
+  </message>
+  <message name="GetOncallStandbyGroupsSoapIn">
+    <part name="parameters" element="s0:GetOncallStandbyGroupsRequest" />
+  </message>
+  <message name="GetOncallStandbyGroupsSoapOut">
+    <part name="parameters" element="s0:GetOncallStandbyGroupsResponse" />
+  </message>
+  <message name="GetPublicHolidaysSoapIn" />
+  <message name="GetPublicHolidaysSoapOut">
+    <part name="parameters" element="s0:GetPublicHolidaysResponse" />
+  </message>
+  <portType name="ActivitiesEvidenceSoap">
+    <operation name="GetCustomers">
+      <input message="s0:GetCustomersSoapIn" />
+      <output message="s0:GetCustomersSoapOut" />
+    </operation>
+    <operation name="GetActivities">
+      <input message="s0:GetActivitiesSoapIn" />
+      <output message="s0:GetActivitiesSoapOut" />
+    </operation>
+    <operation name="GetOvertimeTypes">
+      <input message="s0:GetOvertimeTypesSoapIn" />
+      <output message="s0:GetOvertimeTypesSoapOut" />
+    </operation>
+    <operation name="SendActivity">
+      <input message="s0:SendActivitySoapIn" />
+    </operation>
+    <operation name="UpdateActivity">
+      <input message="s0:UpdateActivitySoapIn" />
+      <output message="s0:UpdateActivitySoapOut" />
+    </operation>
+    <operation name="DeleteActivity">
+      <input message="s0:DeleteActivitySoapIn" />
+    </operation>
+    <operation name="GetLastActivities">
+      <input message="s0:GetLastActivitiesSoapIn" />
+      <output message="s0:GetLastActivitiesSoapOut" />
+    </operation>
+    <operation name="GetTodayWorkDuration">
+      <input message="s0:GetTodayWorkDurationSoapIn" />
+      <output message="s0:GetTodayWorkDurationSoapOut" />
+    </operation>
+    <operation name="GetActivitiesForClaim">
+      <input message="s0:GetActivitiesForClaimSoapIn" />
+      <output message="s0:GetActivitiesForClaimSoapOut" />
+    </operation>
+    <operation name="GetDefaultClaimCode">
+      <input message="s0:GetDefaultClaimCodeSoapIn" />
+      <output message="s0:GetDefaultClaimCodeSoapOut" />
+    </operation>
+    <operation name="UpdateActivityForClaim">
+      <input message="s0:UpdateActivityForClaimSoapIn" />
+    </operation>
+    <operation name="SendInformation">
+      <input message="s0:SendInformationSoapIn" />
+    </operation>
+    <operation name="GetOncallSchedule">
+      <input message="s0:GetOncallScheduleSoapIn" />
+      <output message="s0:GetOncallScheduleSoapOut" />
+    </operation>
+    <operation name="GetOncallStandbyGroups">
+      <input message="s0:GetOncallStandbyGroupsSoapIn" />
+      <output message="s0:GetOncallStandbyGroupsSoapOut" />
+    </operation>
+    <operation name="GetPublicHolidays">
+      <input message="s0:GetPublicHolidaysSoapIn" />
+      <output message="s0:GetPublicHolidaysSoapOut" />
+    </operation>
+  </portType>
+  <binding name="ActivitiesEvidenceSoap" type="s0:ActivitiesEvidenceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetCustomers">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/GetCustomers" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetActivities">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/GetActivities" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetOvertimeTypes">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/OvertimeTypes" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendActivity">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/SendActivity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+    </operation>
+    <operation name="UpdateActivity">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/UpdateActivity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeleteActivity">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/DeleteActivity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+    </operation>
+    <operation name="GetLastActivities">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/GetLastActivities" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTodayWorkDuration">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/GetTodayWorkDuration" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetActivitiesForClaim">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/GetActivitiesForClaim" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDefaultClaimCode">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/GetDefaultClaimCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="UpdateActivityForClaim">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/UpdateActivityForClaim" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+    </operation>
+    <operation name="SendInformation">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/SendInformation" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+    </operation>
+    <operation name="GetOncallSchedule">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/GetOncallSchedule" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetOncallStandbyGroups">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/GetOncallStandbyGroups" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPublicHolidays">
+      <soap:operation soapAction="http://activity.evidence.cz.ibm.com/GetPublicHolidays" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ActivitiesEvidenceSoap12" type="s0:ActivitiesEvidenceSoap">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+    <operation name="GetCustomers">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/GetCustomers" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+      <output>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </output>
+    </operation>
+    <operation name="GetActivities">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/GetActivities" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+      <output>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </output>
+    </operation>
+    <operation name="GetOvertimeTypes">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/GetOvertimeTypes" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+      <output>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </output>
+    </operation>
+    <operation name="SendActivity">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/SendActivity" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+    </operation>
+    <operation name="UpdateActivity">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/UpdateActivity" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+      <output>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </output>
+    </operation>
+    <operation name="DeleteActivity">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/DeleteActivity" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+    </operation>
+    <operation name="GetLastActivities">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/GetLastActivities" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+      <output>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </output>
+    </operation>
+    <operation name="GetTodayWorkDuration">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/GetTodayWorkDuration" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+      <output>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </output>
+    </operation>
+    <operation name="GetActivitiesForClaim">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/GetActivitiesForClaim" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+      <output>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </output>
+    </operation>
+    <operation name="GetDefaultClaimCode">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/GetDefaultClaimCode" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+      <output>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </output>
+    </operation>
+    <operation name="UpdateActivityForClaim">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/UpdateActivityForClaim" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+    </operation>
+    <operation name="SendInformation">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/SendInformation" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+    </operation>
+    <operation name="GetOncallSchedule">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/GetOncallSchedule" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+      <output>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </output>
+    </operation>
+    <operation name="GetOncallStandbyGroups">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/GetOncallStandbyGroups" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+      <output>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </output>
+    </operation>
+    <operation name="GetPublicHolidays">
+      <operation soapAction="http://activity.evidence.cz.ibm.com/GetPublicHolidays" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+      <output>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ActivitiesEvidence">
+    <documentation>Activity evidence service for storing data at the server</documentation>
+    <port name="ActivitiesEvidenceSoap" binding="s0:ActivitiesEvidenceSoap">
+      <soap:address location="http://0.0.0.0/activities_evidence/service.php" />
+    </port>
+    <port name="ActivitiesEvidenceSoap12" binding="s0:ActivitiesEvidenceSoap12">
+      <address location="http://0.0.0.0/activities_evidence/service.php" xmlns="http://schemas.xmlsoap.org/wsdl/soap12/" />
+    </port>
+  </service>
+</definitions>

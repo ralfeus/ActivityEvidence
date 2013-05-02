@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityEvidence", "ActivityEvidence.csproj", "{9E525C86-7995-4783-ACD0-4E3E78946A15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamCommunicator", "..\..\TeamCommunicator\TeamCommunicator.csproj", "{76B886A1-6EA1-4E91-98B1-4B095DA80290}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E525C86-7995-4783-ACD0-4E3E78946A15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E525C86-7995-4783-ACD0-4E3E78946A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E525C86-7995-4783-ACD0-4E3E78946A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E525C86-7995-4783-ACD0-4E3E78946A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76B886A1-6EA1-4E91-98B1-4B095DA80290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76B886A1-6EA1-4E91-98B1-4B095DA80290}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
